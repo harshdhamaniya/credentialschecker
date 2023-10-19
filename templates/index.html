@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credentials Checker</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 700px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        h4 {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            margin-right: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: lightgreen;
+            color: #333;
+        }
+        .error {
+            background-color: #ffcccc;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Credentials Checker</h1>
+        <h4>Developer - Harsh Dhamaniya</h4>
+        <form method="POST" action="/"> <!-- Specify the action attribute for the form -->
+            <div class="form-group">
+                <label for="ip_addresses">IP Address:</label>
+                <textarea name="ip_addresses" id="ip_addresses" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="custom_port_enabled">Custom Port:</label>
+                <input type="checkbox" name="custom_port_enabled" id="custom_port_checkbox" onclick="toggleCustomPortInput(this)">
+                <input type="text" name="custom_port" id="custom_port_input" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="smb_enabled">SMB:</label>
+                <input type="checkbox" name="smb_enabled">
+            </div>
+
+            <div class="form-group">
+                <label for="ssh_enabled">SSH:</label>
+                <input type="checkbox" name="ssh_enabled">
+            </div>
+
+            <input class="button" type="submit" value="Check Credentials">
+        </form>
+
+<!-- Placeholder for SMB result display -->
+<div class="result success">
+    <strong>SMB Results:</strong>
+    <ul>
+      {% for result in smb_results %}
+        <li>{{ result }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+  <!-- Placeholder for SSH result display -->
+  <div class="result success">
+    <strong>SSH Results:</strong>
+    <ul>
+      {% for result in ssh_results %}
+        <li>{{ result }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+    </div>
+
+    <script>
+        // Function to restrict custom port input to valid numbers in the range 1-65535
+        function restrictCustomPortInput() {
+            var customPortInput = document.getElementById('custom_port_input');
+            var inputValue = customPortInput.value;
+
+            // Remove any non-digit characters
+            inputValue = inputValue.replace(/[^0-9]/g, '');
+
+            // Ensure the value is within the desired range
+            if (inputValue < 1) {
+                inputValue = '1';
+            } else if (inputValue > 65535) {
+                inputValue = '65535';
+            }
+
+            customPortInput.value = inputValue;
+        }
+
+        // Function to toggle the custom port input field
+        function toggleCustomPortInput(checkbox) {
+            var customPortInput = document.getElementById('custom_port_input');
+            customPortInput.disabled = !checkbox.checked;
+        }
+    </script>
+</body>
+</html>
