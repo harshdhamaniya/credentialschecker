@@ -36,8 +36,17 @@ git clone "https://github.com/harshdhamaniya/credentialschecker.git"
 sudo pip install -r requirements.txt
 python app.py
 ```
+
+<p align="center">
+<img src="https://github.com/harshdhamaniya/credentialschecker/assets/116166209/d8bb1bc0-858b-43e7-b82b-cd2219619cbb">
+</p>
+
 - Web Based Application can be accessible at `http://localhost:8015/` OR `http://127.0.0.1:8015/`
 - If you're hosting the application on VPS, you can access it via `http://<VPSIP Address>:8015/`
+
+<p align="center">
+<img src="https://github.com/harshdhamaniya/credentialschecker/assets/116166209/d23effa5-4bef-4a09-aff8-a25d1f9866f4" align="center" width="900" height="700">
+</p>
 
 ### **Windows Standalone**
 
@@ -45,6 +54,10 @@ Credentials Checker SSH/SMB is easy to install and runs on major operating syste
 
 1. Download the tool from [GitHub Releases](https://github.com/harshdhamaniya/credentialschecker/releases).
 2. Install the tool on your system following the installation guide provided in the repository.
+
+<p align="center">
+<img src="https://github.com/harshdhamaniya/credentialschecker/assets/116166209/12e4d9db-e980-41f4-b7eb-ff86991401bd" align="center" width="700" height="700">
+</p>
 
 ## **Usage**
 
