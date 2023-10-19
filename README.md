@@ -30,6 +30,17 @@ Upload a list of IP addresses and their associated username and password combina
 
 ## **Installation**
 
+### **Host via Python**
+```
+git clone "https://github.com/harshdhamaniya/credentialschecker.git"
+sudo pip install -r requirements.txt
+python app.py
+```
+- Web Based Application can be accessible at `http://localhost:8015/` OR `http://127.0.0.1:8015/`
+- If you're hosting the application on VPS, you can access it via `http://<VPSIP Address>:8015/`
+
+### **Windows Standalone**
+
 Credentials Checker SSH/SMB is easy to install and runs on major operating systems. To get started, follow these steps:
 
 1. Download the tool from [GitHub Releases](https://github.com/harshdhamaniya/credentialschecker/releases).
